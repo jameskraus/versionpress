@@ -11,4 +11,7 @@ install:
 before_script:
   - npm install -g gulp
   - npm install gulp
-script: gulp run-tests
+  - cp plugins/versionpress/tests/test-config.sample.yml plugins/versionpress/tests/test-config.yml
+  - sed -i.bak -e 's/end2end-test-type: .*/end2end-test-type: wp-cli/' plugins/versionpress/tests/test-config.yml
+
+script: plugins/versionpress/tests/gulp run-tests
