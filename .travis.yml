@@ -6,6 +6,7 @@ php:
   - '7.0'
   - nightly
 install:
+  - nvm install node
   - npm install
 before_script:
   - npm install -g gulp
