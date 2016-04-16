@@ -17,7 +17,7 @@ install:
   - nvm install node
   - npm install
 before_script:
-  - bash plugins/versionpress/tests/install-wp-tests.sh $DB_NAME $DB_USER $DB_PASSWORD localhost $WP_VERSION 
+  - bash plugins/versionpress/tests/install-wp-tests.sh $DB_NAME $DB_USER "$DB_PASSWORD" localhost $WP_VERSION 
   - npm install -g gulp
   - npm install gulp
   - cp plugins/versionpress/tests/test-config.sample.yml plugins/versionpress/tests/test-config.yml
