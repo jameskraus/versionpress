@@ -1,14 +1,19 @@
 language: php
 php:
   - '5.4'
-  - '5.5'
-  - '5.6'
   - '7.0'
   - nightly
+  
+env:
+  # nightly:
+  - WP_VERSION=nightly WP_MULTISITE=0
+  # latest stable:
+  - WP_VERSION=latest WP_MULTISITE=0
 install:
   - nvm install node
   - npm install
 before_script:
+  - bash plugins/versionpress/tests/install-wp-tests.sh $DB_NAME $DB_USER $DB_PASSWORD localhost $WP_VERSION 
   - npm install -g gulp
   - npm install gulp
   - cp plugins/versionpress/tests/test-config.sample.yml plugins/versionpress/tests/test-config.yml
