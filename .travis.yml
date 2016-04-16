@@ -9,18 +9,19 @@ php:
   - nightly
   
 env:
-  # nightly:
-  - WP_VERSION=nightly WP_MULTISITE=0
-  # latest stable:
-  - WP_VERSION=latest WP_MULTISITE=0
-  
-  
-  - WP_CORE_DIR=/tmp/wordpress
-  - WP_TESTS_DIR=/tmp/wordpress-tests-lib
-  - DB_NAME=wordpress_test
-  - DB_USER=root
-  - DB_PASSWORD=''
-  
+  matrix:
+    # nightly:
+    - WP_VERSION=nightly 
+    # latest stable:
+    - WP_VERSION=latest
+  global:
+    - WP_CORE_DIR=/tmp/wordpress
+    - WP_TESTS_DIR=/tmp/wordpress-tests-lib
+    - DB_NAME=wordpress_test
+    - DB_USER=root
+    - DB_PASSWORD=''
+    - WP_MULTISITE=0
+
 install:
   - nvm install node
   - npm install
