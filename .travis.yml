@@ -39,5 +39,6 @@ before_script:
   - 'sed -i.bak -e "s/user: .*/user: $DB_USER/" plugins/versionpress/tests/test-config.yml'
   - 'sed -i.bak -e "s/password: .*/password: $DB_PASSWORD/" plugins/versionpress/tests/test-config.yml'
   - 'sed -i.bak -e "s#path: .*#path: $WP_CORE_DIR#" plugins/versionpress/tests/test-config.yml'
+  - 'sed -i.bak -e "s#wp-cli-version: .*#wp-cli-version: latest-stable#" plugins/versionpress/tests/test-config.yml'
 
 script: gulp --cwd plugins/versionpress/tests run-tests --force-setup
