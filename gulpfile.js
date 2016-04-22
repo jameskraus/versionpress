@@ -182,7 +182,7 @@ gulp.task('composer-install', false, ['copy'], shell.task(['composer install -d 
  * Removes composer.json|lock after the `composer-install` task is done
  */
 gulp.task('remove-composer-files', false, ['composer-install'], function (cb) {
-    return del([buildDir + '/composer.json', buildDir + '/composer.lock']);
+    return del([buildDir + '/composer.lock']);
 });
 
 /**
@@ -237,7 +237,7 @@ gulp.task('update-plugin-version', false, ['fill-vp-version', 'copy'], function(
 gulp.task('zip', false, ['copy', 'disable-debugger', 'remove-composer-files', 'fill-vp-version', 'update-plugin-version'], function (cb) {
     return gulp.src(buildDir + '/**', {dot: true}).
         pipe(rename(function (path) {
-            path.dirname = 'versionpress/' + path.dirname;
+            path.dirname = path.dirname;
         })).
         pipe(zip('versionpress-' + packageVersion + '.zip')).
         pipe(gulp.dest(distDir));
